@@ -1,0 +1,29 @@
+name: Generate KRA Data
+on:
+  workflow_dispatch:  # Allows manual triggering
+  push:
+    branches: [ main ]  # Optional: Auto-run on push to main
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'  # Match your Ruby version
+          bundler-cache: true
+          
+      - name: Generate Data
+        run: bundle exec rake kra:generate
+        
+      - name: Upload Generated Data
+        uses: actions/upload-artifact@v4
+        with:
+          name: kra-data
+          path: |
+            lib/assets/kra_data/*.csv
+            lib/assets/kra_data/README.md
+          retention-days: 5  # Automatically delete artifacts after 5 days
+          if-no-files-found: error  # Fail if no files are found
