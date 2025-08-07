@@ -338,7 +338,7 @@ namespace :kra do
         cost = rand(2000000..4000000).round(2)
         purchase_date = Faker::Date.between(from: Date.new(2021, 1, 1), to: Date.new(2023, 6, 30))
         depreciation = depreciation_rates['Vehicles']
-        years_owned = (Date.new(2023, 12, 31).year - purchase_date.year
+        years_owned = (Date.new(2023, 12, 31).year - purchase_date.year)
         nbv = cost * ((1 - (depreciation[:rate] / 100.0)) ** years_owned)
 
         csv << [
