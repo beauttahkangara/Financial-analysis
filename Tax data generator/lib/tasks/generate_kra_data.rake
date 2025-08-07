@@ -21,6 +21,7 @@ namespace :kra do
       test_file = File.join(output_dir, 'test.txt')
       File.write(test_file, 'test')
       File.delete(test_file)
+    end
 
     # Initialize Faker with Kenyan context
     Faker::Config.locale = 'en-KE'
