@@ -15,10 +15,10 @@ jobs:
         with:
           ruby-version: '3.2'
           bundler-cache: true
-          working-directory: './tax-data-generator'  # Focus Ruby setup here
+          working-directory: './Tax data generator'  # Focus Ruby setup here
 
       - name: Generate Data
-        working-directory: './tax-data-generator'  # Run from subdirectory
+        working-directory: './Tax data generator'  # Run from subdirectory
         run: |
           bundle install
           bundle exec rake kra:generate
@@ -27,5 +27,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kra-data
-          path: 'tax-data-generator/lib/assets/kra_data/*.csv'  # Full path from root
+          path: 'Tax data generator/lib/assets/kra_data/*.csv'  # Full path from root
           retention-days: 5
