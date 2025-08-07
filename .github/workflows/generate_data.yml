@@ -26,7 +26,7 @@ jobs:
           bundle check || bundle install
 
       - name: Run Rake task with trace
-        run: bundle exec rake <kra:generate> --trace
+        run: bundle exec rake -f lib/tasks/generate_kra_data.rake --trace
 
       # Step 4: Generate data
       - name: Generate Data
