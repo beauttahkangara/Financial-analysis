@@ -2,7 +2,7 @@
 
 namespace :kra do
   desc "Generate dummy KRA-compliant financial data for Kenyan company"
-  task generate do
+  task :generate do
 
     require 'csv'
     require 'faker'
