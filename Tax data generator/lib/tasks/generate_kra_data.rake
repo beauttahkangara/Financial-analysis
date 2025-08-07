@@ -463,7 +463,10 @@ namespace :kra do
     end
   end
 
+  require 'pathname'
+
   def generate_readme(output_dir)
+    output_dir = Pathname.new(output_dir) unless output_dir.is_a?(Pathname)
     File.open(output_dir.join('README.md'), 'w') do |file|
       file.write <<~README
         # XYZ Manufacturing Ltd - Dummy KRA Tax Data
