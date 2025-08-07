@@ -32,7 +32,7 @@ jobs:
       - name: Generate Data
         working-directory: './Tax data generator'
         run: |
-          bundle exec rake kra:generate
+          bundle exec rake -f lib/tasks/generate_kra_data.rake kra:generate
 
       # Step 5: Upload results
       - name: Upload Generated Data
