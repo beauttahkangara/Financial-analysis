@@ -36,5 +36,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kra-data
-          path: tax-data-generator/lib/assets/kra_data/*
+          path: Tax data generator/lib/assets/kra_data/*
           retention-days: 5
