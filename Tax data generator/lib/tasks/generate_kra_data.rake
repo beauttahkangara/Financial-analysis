@@ -47,7 +47,7 @@ namespace :kra do
     generate_readme(output_dir)
 
     puts "Successfully generated all KRA dummy data files in #{output_dir}"
-  end
+    end
 
   private
 
