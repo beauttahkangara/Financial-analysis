@@ -9,7 +9,7 @@ namespace :kra do
     require 'date'
 
     # Create output directory
-    output_dir = Rails.root.join('lib/assets/kra_data')
+    output_dir = File.expand_path('lib/assets/kra_data', __dir__)
     FileUtils.mkdir_p(output_dir)
 
     # Initialize Faker with Kenyan context
