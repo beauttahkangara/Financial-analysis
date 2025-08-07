@@ -1,11 +1,13 @@
 # lib/tasks/generate_kra_data.rake
-require 'csv'
-require 'faker'
-require 'date'
 
 namespace :kra do
   desc "Generate dummy KRA-compliant financial data for Kenyan company"
-  task generate: :environment do
+  task generate do
+
+    require 'csv'
+    require 'faker'
+    require 'date'
+
     # Create output directory
     output_dir = Rails.root.join('lib/assets/kra_data')
     FileUtils.mkdir_p(output_dir)
