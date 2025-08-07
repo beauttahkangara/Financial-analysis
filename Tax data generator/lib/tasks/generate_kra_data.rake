@@ -42,7 +42,8 @@ namespace :kra do
   private
 
   def generate_sales_data(output_dir)
-    CSV.open(output_dir.join('sales_data.csv'), 'w') do |csv|
+    CSV.open(File.join(output_dir, 'sales_data.csv'), 'w') do |csv|
+    
       csv << %w[InvoiceNo Date CustomerName CustomerPIN Product Quantity UnitPrice VATable VATAmount ExciseDuty WithholdingTax TotalAmount]
 
       300.times do |i|
@@ -105,7 +106,7 @@ namespace :kra do
       {name: 'Capital Equipment', deductible: 'Y', section: 'Second Schedule'}
     ]
 
-    CSV.open(output_dir.join('purchases_data.csv'), 'w') do |csv|
+    CSV.open(File.join(output_dir, 'purchases_data.csv'), 'w') do |csv|
       csv << %w[ReceiptNo Date SupplierName SupplierPIN Description Amount VATAmount WithholdingTax ExpenseCategory TaxDeductible SectionOfDeduction]
 
       150.times do |i|
@@ -183,7 +184,7 @@ namespace :kra do
       { range: 100000..Float::INFINITY, amount: 1700 }
     ]
 
-    CSV.open(output_dir.join('payroll_data.csv'), 'w') do |csv|
+    CSV.open(File.join(output_dir, 'payroll_data.csv'), 'w') do |csv|
       csv << %w[EmployeeID Name KRA_PIN BasicSalary Allowances Benefits PAYE NSSF_TierI NSSF_TierII NHIF PensionDeductions NetPay]
 
       # Generate 5 executives
@@ -308,8 +309,8 @@ namespace :kra do
       'Furniture' => { method: 'Straight Line', rate: 10 },
       'Buildings' => { method: 'Straight Line', rate: 2.5 }
     }
-
-    CSV.open(output_dir.join('assets_data.csv'), 'w') do |csv|
+    
+    CSV.open(File.join(output_dir, 'assets_data.csv'), 'w') do |csv|
       csv << %w[AssetID Description PurchaseDate Cost ImportDutyPaid DepreciationMethod DepreciationRate NBV SectionOfDeduction]
 
       # Machinery (eligible for investment deduction)
@@ -382,7 +383,8 @@ namespace :kra do
   end
 
   def generate_tax_returns(output_dir)
-    CSV.open(output_dir.join('tax_returns.csv'), 'w') do |csv|
+    
+    CSV.open(File.join(output_dir, 'tax_returns.csv'), 'w') do |csv|
       csv << %w[Month VAT_Output VAT_Input VAT_Payable PAYE_Remitted Excise_Duty WHT_Remitted Installment_Tax]
 
       (7..12).each do |month| # July to December
@@ -415,7 +417,8 @@ namespace :kra do
   end
 
   def generate_suppliers_data(output_dir)
-    CSV.open(output_dir.join('suppliers_data.csv'), 'w') do |csv|
+   
+    CSV.open(File.join(output_dir, 'suppliers_data.csv'), 'w') do |csv|
       csv << %w[SupplierID SupplierName PIN Address Contact VAT_Registered WHT_Applicable]
 
       # Raw material suppliers
