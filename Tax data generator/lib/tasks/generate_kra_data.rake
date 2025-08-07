@@ -7,10 +7,20 @@ namespace :kra do
     require 'csv'
     require 'faker'
     require 'date'
+    require 'fileutils'
 
-    # Create output directory
-    output_dir = File.expand_path('lib/assets/kra_data', __dir__)
-    FileUtils.mkdir_p(output_dir)
+    # FIX 1: Correct output directory path (relative to project root)
+    output_dir = File.expand_path('../../../lib/assets/kra_data', __dir__)
+    puts "Output directory: #{output_dir}" # Debug output
+    
+    begin
+      FileUtils.mkdir_p(output_dir)
+      puts "Directory created successfully" # Debug
+      
+      # FIX 2: Verify directory is writable
+      test_file = File.join(output_dir, 'test.txt')
+      File.write(test_file, 'test')
+      File.delete(test_file)
 
     # Initialize Faker with Kenyan context
     Faker::Config.locale = 'en-KE'
