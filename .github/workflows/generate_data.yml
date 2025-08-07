@@ -1,22 +1,6 @@
-steps:
-  - uses: actions/checkout@v4
-  
-  - name: Set up Ruby
-    uses: ruby/setup-ruby@v1
-    with:
-      ruby-version: '3.2'
-      bundler-cache: true  # Auto-installs gems and caches them
-      working-directory: './Tax data generator'  # Key: Targets your subdirectory
-
-  - name: Verify installation
-    working-directory: './Tax data generator'
-    run: bundle check || bundle install
-  - name: Debug directory structure
-    run: ls -R Tax data generator
-  
 name: Generate KRA Data
 on:
-  workflow_dispatch:  # Manual trigger
+  workflow_dispatch:  # Allows manual triggering
   push:
     branches: [ main ]
 
@@ -24,24 +8,33 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout code
       - uses: actions/checkout@v4
 
+      # Step 2: Set up Ruby environment
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.2'
           bundler-cache: true
-          working-directory: './Tax data generator'  # Focus Ruby setup here
+          working-directory: './Tax data generator'
 
-      - name: Generate Data
-        working-directory: './Tax data generator'  # Run from subdirectory
+      # Step 3: Verify/install gems
+      - name: Verify installation
+        working-directory: './Tax data generator'
         run: |
-          bundle install
+          bundle check || bundle install
+
+      # Step 4: Generate data
+      - name: Generate Data
+        working-directory: './Tax data generator'
+        run: |
           bundle exec rake kra:generate
 
+      # Step 5: Upload results
       - name: Upload Generated Data
         uses: actions/upload-artifact@v4
         with:
           name: kra-data
-          path: 'Tax data generator/lib/assets/kra_data/*.csv'  # Full path from root
+          path: tax-data-generator/lib/assets/kra_data/*
           retention-days: 5
