@@ -1,1 +1,13 @@
-
+SupplierID,SupplierName,PIN,Address,Contact,VAT_Registered,WHT_Applicable
+SUP100,Stanbic Holdings Polymers,P679432664V,Nairobi Industrial Area,07213702908,Y,Y
+SUP101,British American Tobacco Kenya Chemicals,P554554299V,Nairobi Industrial Area,07248126903,Y,Y
+SUP102,Kenya Re-Insurance Corporation Plastics,P323525811V,Nairobi Industrial Area,07206629011,Y,Y
+SUP103,Sasini Chemicals,P331358657V,Nairobi Industrial Area,07208091763,Y,Y
+SUP104,Nairobi Business Ventures Chemicals,P164878296V,Nairobi Industrial Area,07263410340,Y,Y
+SUP200,Carbacid Investments Office Solutions,P415207424B,"CBD, Nairobi",07338542671,Y,Y
+SUP201,Standard Group Office Solutions,P245166268B,"Westlands, Nairobi",07475053439,Y,Y
+SUP202,HF Group Equipment,P270768915B,"Westlands, Nairobi",07344771660,Y,Y
+SUP300,Olympia Capital Holdings Consultancy,P710974576K,Nakuru,07704430902,Y,Y
+SUP301,Kenya Power & Lighting Consultancy,P330942137K,Kisumu,07587161546,N,Y
+SUP302,British American Tobacco Kenya Logistics,P671347407K,Nakuru,07765350640,N,Y
+SUP303,Kenya Airways Consultancy,P862611624K,Kisumu,07678061460,Y,Y

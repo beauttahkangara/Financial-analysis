@@ -1,1 +1,14 @@
-
+AssetID,Description,PurchaseDate,Cost,ImportDutyPaid,DepreciationMethod,DepreciationRate,NBV,SectionOfDeduction
+AST100,Extrusion Moulding Machine,2021-09-22,2178704,217870.4,Straight Line,12.5,1565943.5,Second Schedule
+AST101,Injection Moulding Machine,2020-08-20,3556254,355625.4,Straight Line,12.5,2074481.5,Second Schedule
+AST102,Blow Moulding Machine,2023-04-22,3043520,304352.0,Straight Line,12.5,2789893.33,Second Schedule
+AST103,Injection Moulding Machine,2022-05-15,1575933,157593.3,Straight Line,12.5,1264029.59,Second Schedule
+AST104,Blow Moulding Machine,2023-01-01,3833781,383378.1,Straight Line,12.5,3354558.38,Second Schedule
+AST200,Mitsubishi Van,2021-11-12,3859923,0,Reducing Balance,25,2171206.69,Section 15(2)
+AST201,Mitsubishi Van,2023-01-09,3731320,0,Reducing Balance,25,3731320.0,Section 15(2)
+AST202,Mitsubishi Van,2023-02-05,2902348,0,Reducing Balance,25,2902348.0,Section 15(2)
+AST300,Laptop,2022-06-27,249068,0,Straight Line,30,136987.4,Section 15(1)
+AST301,Laptop,2023-06-17,187058,0,Straight Line,30,158999.3,Section 15(1)
+AST302,Printer,2023-06-25,82247,0,Straight Line,30,69909.95,Section 15(1)
+AST303,Laptop,2022-08-16,239506,0,Straight Line,30,143703.6,Section 15(1)
+AST304,Server,2022-10-17,80670,0,Straight Line,30,52435.5,Section 15(1)
