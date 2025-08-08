@@ -37,6 +37,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kra-data
-          path: 'Tax data generator/lib/assets/kra_data/*.csv'
+          path: /home/runner/work/Financial-analysis/Financial-analysis/lib/assets/kra_data/*.csv
           retention-days: 5
 
