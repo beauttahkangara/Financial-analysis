@@ -25,9 +25,6 @@ jobs:
         run: |
           bundle check || bundle install
           
-          echo "Folder contents:"
-          ls -R 'Tax data generator/lib/assets/'
-          [ -f 'Tax data generator/lib/assets/kra_data/sales_data.csv' ] || exit 1
 
       # Step 4: Generate data
       - name: Generate Data
