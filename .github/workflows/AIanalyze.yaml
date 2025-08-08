@@ -17,6 +17,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: origin/main  # Explicitly specify branch
+          path: 'Tax data generator'  # Checkout into subdirectory
 
       # Setup Python in the same working directory
       - name: Set up Python
