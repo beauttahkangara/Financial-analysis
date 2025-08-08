@@ -40,3 +40,61 @@ jobs:
           path: /home/runner/work/Financial-analysis/Financial-analysis/lib/assets/kra_data/*.csv
           retention-days: 5
 
+      - name: Set up Python for AI analysis
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install analysis dependencies
+        run: |
+          pip install pandas matplotlib seaborn scikit-learn jupyter nbconvert plotly
+      
+      - name: Run AI analysis
+        run: |
+          python - << 'EOF'
+          import pandas as pd
+          import matplotlib.pyplot as plt
+          import seaborn as sns
+          from sklearn.ensemble import IsolationForest
+          import os
+          
+          # 1. Load and merge data
+          sales = pd.read_csv("Financial-analysis/lib/assets/kra_data/sales_data.csv")
+          purchases = pd.read_csv("Financial-analysis/lib/assets/kra_data/purchases_data.csv")
+          payroll = pd.read_csv("Financial-analysis/lib/assets/kra_data/payroll_data.csv")
+          
+          # 2. AI-powered anomaly detection
+          clf = IsolationForest(contamination=0.05)
+          sales['anomaly'] = clf.fit_predict(sales[['TotalAmount']])
+          
+          # 3. Generate visualizations
+          plt.figure(figsize=(12,6))
+          sns.lineplot(x='Date', y='TotalAmount', data=sales.resample('M', on='Date').sum())
+          plt.title("Monthly Sales Trend")
+          plt.savefig('analysis_results/sales_trend.png')
+          
+          # 4. Create comprehensive report
+          with open('analysis_results/report.md', 'w') as f:
+              f.write("# Financial Analysis Report\n\n")
+              f.write("## Key Findings\n\n")
+              f.write(f"- Total Sales: KES {sales['TotalAmount'].sum():,.2f}\n")
+              f.write(f"- Anomalous Transactions Detected: {sum(sales['anomaly'] == -1)}\n\n")
+              f.write("![Sales Trend](sales_trend.png)\n")
+          
+          # 5. Save processed data
+          sales.to_csv('analysis_results/enhanced_sales.csv', index=False)
+          EOF
+      
+      - name: Commit and push results
+        run: |
+          mkdir -p Financial-analysis/analysis_results
+          mv analysis_results/* Financial-analysis/analysis_results/
+          cd Financial-analysis
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add analysis_results/
+          git commit -m "Add AI analysis results"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
