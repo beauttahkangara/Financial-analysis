@@ -24,6 +24,10 @@ jobs:
         working-directory: './Tax data generator'
         run: |
           bundle check || bundle install
+          
+          echo "Folder contents:"
+          ls -R 'Tax data generator/lib/assets/'
+          [ -f 'Tax data generator/lib/assets/kra_data/sales_data.csv' ] || exit 1
 
       # Step 4: Generate data
       - name: Generate Data
@@ -36,5 +40,6 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: kra-data
-          path: Tax data generator/lib/assets/kra_data/*
+          path: 'Tax data generator/lib/assets/kra_data/*.csv'
           retention-days: 5
+
