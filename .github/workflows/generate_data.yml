@@ -7,6 +7,12 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write  # If creating PRs
+      issues: write
+      
     steps:
       # Step 1: Checkout code
       - uses: actions/checkout@v4
