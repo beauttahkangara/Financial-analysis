@@ -1,4 +1,4 @@
-name: Generate KRA Data
+name: Analze
 on:
   workflow_dispatch:  # Allows manual triggering
   push:
@@ -37,8 +37,8 @@ jobs:
           import matplotlib.pyplot as plt
           
           # Paths are now relative to './Tax data generator'
-          sales = pd.read_csv("Tax data generator/lib/assets/kra_data/sales_data.csv")  
-          purchases = pd.read_csv("Tax data generator/lib/assets/kra_data/purchases_data.csv")
+          sales = pd.read_csv("./Tax data generator/lib/assets/kra_data/sales_data.csv")  
+          purchases = pd.read_csv("./Tax data generator/lib/assets/kra_data/purchases_data.csv")
           
           # Your analysis code here
           plt.figure(figsize=(10,6))
