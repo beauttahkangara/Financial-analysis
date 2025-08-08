@@ -1,6 +1,16 @@
+name: Generate KRA Data
+on:
+  workflow_dispatch:  # Allows manual triggering
+  push:
+    branches: [ main ]
+      
 jobs:
   analyze:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write  # If creating PRs
+      issues: write
     defaults:
       run:
         working-directory: './Tax data generator'  # All steps will run from here
