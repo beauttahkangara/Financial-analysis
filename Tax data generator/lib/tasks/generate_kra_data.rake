@@ -54,8 +54,7 @@ namespace :kra do
 
   def generate_sales_data(output_dir)
     CSV.open(File.join(output_dir, 'sales_data.csv'), 'w') do |csv|
-    
-      csv << %w[InvoiceNo Date CustomerName CustomerPIN Product Quantity UnitPrice VATable VATAmount ExciseDuty WithholdingTax TotalAmount]
+       csv << %w[InvoiceNo Date CustomerName CustomerPIN Product Quantity UnitPrice VATable VATAmount ExciseDuty WithholdingTax TotalAmount]
 
       300.times do |i|
         date = Faker::Date.between(from: Date.new(2023, 7, 1), to: Date.new(2023, 12, 31))
