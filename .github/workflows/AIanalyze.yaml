@@ -1,1 +1,52 @@
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: './Tax data generator'  # All steps will run from here
 
+    steps:
+      - uses: actions/checkout@v4
+
+      # Setup Python in the same working directory
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # Install dependencies
+      - name: Install packages
+        run: |
+          pip install pandas matplotlib seaborn scikit-learn plotly
+
+      # AI Analysis (paths are now relative to working directory)
+      - name: Run AI analysis
+        run: |
+          python - << 'EOF'
+          import pandas as pd
+          import matplotlib.pyplot as plt
+          
+          # Paths are now relative to './Tax data generator'
+          sales = pd.read_csv("lib/assets/kra_data/sales_data.csv")  
+          purchases = pd.read_csv("lib/assets/kra_data/purchases_data.csv")
+          
+          # Your analysis code here
+          plt.figure(figsize=(10,6))
+          sales.groupby('Date')['TotalAmount'].sum().plot()
+          plt.savefig('analysis/sales_trend.png')
+          EOF
+
+      # Save results (relative to working directory)
+      - name: Save outputs
+        run: |
+          mkdir -p analysis
+          echo "## Analysis Report" > analysis/report.md
+          echo "![Sales Trend](sales_trend.png)" >> analysis/report.md
+          
+      # Upload artifacts (path relative to repo root)
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-results
+          path: |
+            Tax data generator/analysis/*
