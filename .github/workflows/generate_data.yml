@@ -65,9 +65,9 @@ jobs:
           import os
           
           # 1. Load and merge data
-          sales = pd.read_csv("Financial-analysis/lib/assets/kra_data/sales_data.csv")
-          purchases = pd.read_csv("Financial-analysis/lib/assets/kra_data/purchases_data.csv")
-          payroll = pd.read_csv("Financial-analysis/lib/assets/kra_data/payroll_data.csv")
+          sales = pd.read_csv("Financial-analysis/Tax data generator/lib/assets/kra_data/sales_data.csv")
+          purchases = pd.read_csv("Financial-analysis/Tax data generator/lib/assets/kra_data/purchases_data.csv")
+          payroll = pd.read_csv("Financial-analysis/Tax data generator/lib/assets/kra_data/payroll_data.csv")
           
           # 2. AI-powered anomaly detection
           clf = IsolationForest(contamination=0.05)
